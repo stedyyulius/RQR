@@ -1,0 +1,3 @@
+rootProject.name = 'RQR'
+
+include ':app'
