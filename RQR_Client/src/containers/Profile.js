@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React , { Component } from 'react'
 import { connect } from 'react-redux'
 import{
   View,
-  StyleSheet,
-  Text
+  Text,
+  StyleSheet
 } from 'react-native'
 
-class Home extends Component{
+class Profile extends Component{
   constructor(props){
     super(props)
     this.state={}
@@ -15,7 +15,7 @@ class Home extends Component{
     return(
       <View>
         <Text>
-          Halo
+          ini profile
         </Text>
       </View>
     )
@@ -38,4 +38,4 @@ const mapDispatchToProps = (dispatch) =>{
   }
 }
 
-export default connect (mapStateToProps,mapDispatchToProps)(Home)
+export default connect (mapStateToProps,mapDispatchToProps)(Profile)
