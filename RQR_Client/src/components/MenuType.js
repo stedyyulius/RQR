@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import{
   View,
   StyleSheet,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native'
 
 import { filterMenu } from '../actions'
@@ -16,9 +17,11 @@ class TypeMenu extends Component{
   render(){
     return(
       <View>
-        <Text>
-          {this.props.text}
-        </Text>
+        <TouchableOpacity>
+          <Text>
+            {this.props.text}
+          </Text>
+        </TouchableOpacity>
       </View>
     )
   }

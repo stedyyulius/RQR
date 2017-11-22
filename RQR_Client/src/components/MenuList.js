@@ -4,7 +4,8 @@ import{
   View,
   StyleSheet,
   Image,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native'
 
 import { filterMenu } from '../actions'
@@ -27,8 +28,22 @@ class MenuList extends Component{
             <Text>
               Rp 120.000
             </Text>
+            <View style={styles.stretch}>
+              <TouchableOpacity style={styles.buttonMinus}>
+                <Image style={styles.select} source={{uri:'http://www.pvhc.net/img157/gdvtflklbitxzfjwggsm.png'}} />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image style={styles.select} source={{uri:'https://maxcdn.icons8.com/Share/icon/p1em/Very_Basic//plus1600.png'}} />
+              </TouchableOpacity>
+            </View>
+            <View style={{flex:1}}>
+
+            </View>
+            <Text style={styles.ammount}>
+              0
+            </Text>
           </View>
-      </View>
+        </View>
     )
   }
 }
@@ -40,7 +55,7 @@ const styles = StyleSheet.create({
     borderColor: '#d6d7da',
     padding: 15,
     margin: 5,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   item:{
     width: 150,
@@ -48,11 +63,27 @@ const styles = StyleSheet.create({
     marginRight: 20
   },
   menuDetail:{
-    flexDirection: 'column'
+    flexDirection: 'column',
+    flex: 1,
   },
   menuDetailTitle:{
     fontWeight: 'bold',
-    justifyContent: 'center'
+  },
+  stretch:{
+    marginTop: 10,
+    flexDirection: 'row',
+  },
+  buttonMinus:{
+    marginRight:12
+  },
+  select:{
+    width: 20,
+    height: 20
+  },
+  ammount:{
+    fontWeight: 'bold',
+    alignSelf: 'flex-end',
+    fontSize: 20,
   }
 })
 

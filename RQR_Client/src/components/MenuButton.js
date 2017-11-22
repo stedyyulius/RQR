@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import{
   View,
   Button,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native'
 
 import { filterMenu } from '../actions'
@@ -16,10 +17,12 @@ class MenuButton extends Component{
   render(){
     return(
       <View style={styles.buttonMenu}>
-        <Button
-          title={this.props.text}
-          onPress={()=> this.props.filterMenu(this.props.text)}
-          color="black" />
+        <TouchableOpacity>
+          <Button
+            title={this.props.text}
+            onPress={()=> this.props.filterMenu(this.props.text)}
+            color="black" />
+        </TouchableOpacity>
       </View>
     )
   }

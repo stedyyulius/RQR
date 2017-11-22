@@ -15,7 +15,7 @@ import{
 } from 'react-native'
 
 import MenuButton from '../components/MenuButton'
-import TypeMenu from '../components/TypeMenu'
+import MenuType from '../components/MenuType'
 import MenuList from '../components/MenuList'
 
 class Menus extends Component{
@@ -53,6 +53,7 @@ class Menus extends Component{
 
 
   render(){
+    const { navigate } = this.props.navigation
     return(
       <ScrollView style={styles.container}>
         {(this.state.menus)
@@ -79,14 +80,20 @@ class Menus extends Component{
                   <MenuButton text="Dessert"/>
                 </View>
                 <View style={styles.actions}>
-                  <TypeMenu text="Appetizer"/>
-                  <TypeMenu text="Pasta"/>
-                  <TypeMenu text="Mains"/>
-                  <TypeMenu text="Seafood"/>
+                  <MenuType text="Appetizer"/>
+                  <MenuType text="Pasta"/>
+                  <MenuType text="Mains"/>
+                  <MenuType text="Seafood"/>
                 </View>
                 <MenuList pic='https://media-cdn.tripadvisor.com/media/photo-s/09/74/41/2e/abuba-steak.jpg' title="T-Bone Steak"/>
                 <MenuList pic='http://hargamenu.com/wp-content/uploads/2014/09/harga-abuba-steak.jpg' title="Rib-Eye NZ Steak"/>
                 <MenuList pic='http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg' title="Sirloin Steak"/>
+                <View style={styles.review}>
+                  <Button
+                    title="Review Order"
+                    color="black"
+                    onPress={()=> navigate('Order',{restaurant:'Abuba Steak',table:1})} />
+                </View>
             </View>
         }
 
@@ -144,6 +151,9 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 15,
   },
+  review:{
+    marginBottom: 40
+  }
 })
 
 const mapStateToProps = (state) =>{

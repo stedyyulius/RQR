@@ -12,6 +12,8 @@ import Menus from './src/containers/Menus'
 import Transactions from './src/containers/Transactions'
 import Profile from './src/containers/Profile'
 import Notifications from './src/containers/Notifications'
+import Order from './src/containers/Order'
+import Checkout from './src/containers/Checkout'
 
 const deviceW = Dimensions.get('window').width
 const basePx = 375
@@ -21,7 +23,8 @@ function px2dp(px) {
 
 const Navigator = StackNavigator({
   Restaurants : { screen: Restaurants },
-  Menus       : { screen: Menus}
+  Menus       : { screen: Menus},
+  Order       : { screen: Order}
 });
 
 export default class App extends Component{
@@ -62,8 +65,8 @@ export default class App extends Component{
           <TabNavigator.Item
             selected={this.state.selectedTab === 'notifications'}
             title="Notifications"
-            renderIcon={() => <Icon name="bell-o" size={px2dp(22)} color="#666" />}
-            renderSelectedIcon={() => <Icon name="bell-o" size={px2dp(22)} color="#3496f0" />}
+            renderIcon={() => <Icon name="bell" size={px2dp(22)} color="#666" />}
+            renderSelectedIcon={() => <Icon name="bell" size={px2dp(22)} color="#3496f0" />}
             badgeText="1"
             onPress={() => this.setState({ selectedTab: 'notifications' })}>
             <Notifications />
@@ -71,8 +74,8 @@ export default class App extends Component{
           <TabNavigator.Item
             selected={this.state.selectedTab === 'profile'}
             title="Profile"
-            renderIcon={() => <Icon name="user-o" size={px2dp(22)} color="#666" />}
-            renderSelectedIcon={() => <Icon name="user-o" size={px2dp(22)} color="#3496f0" />}
+            renderIcon={() => <Icon name="user" size={px2dp(22)} color="#666" />}
+            renderSelectedIcon={() => <Icon name="user" size={px2dp(22)} color="#3496f0" />}
             onPress={() => this.setState({ selectedTab: 'profile' })}>
             <Profile />
           </TabNavigator.Item>
