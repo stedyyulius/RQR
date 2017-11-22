@@ -36,9 +36,7 @@ class Menus extends Component{
 
   onSuccess(e) {
     this.setState({
-      menus:[{
-
-      }]
+      menus:true
     })
  }
 

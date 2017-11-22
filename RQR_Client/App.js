@@ -24,7 +24,8 @@ function px2dp(px) {
 const Navigator = StackNavigator({
   Restaurants : { screen: Restaurants },
   Menus       : { screen: Menus},
-  Order       : { screen: Order}
+  Order       : { screen: Order},
+  Checkout    : { screen: Checkout}
 });
 
 export default class App extends Component{
