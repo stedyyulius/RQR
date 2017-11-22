@@ -49,26 +49,31 @@ class Order extends Component{
   render(){
     const { navigate } = this.props.navigation
     return(
-      <ScrollView style={styles.container}>
-        <View style={styles.participantContainer}>
-          {(participants.map((p,i)=>
-            <Image
-              key={i}
-              style={styles.participant}
-              source={{uri:p.icon}} />
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.participantContainer}>
+            {(participants.map((p,i)=>
+              <Image
+                key={i}
+                style={styles.participant}
+                source={{uri:p.icon}} />
+            ))}
+          </View>
+          <Button
+            title="Edit"
+            color="black"
+            onPress={()=> navigate('Menus')}/>
+          {(participants.map((o,i)=>
+            <CardOrder icon={o.icon} name={o.name} key={i}/>
           ))}
+          <Text style={{fontWeight:'bold'}}>
+            Total: Rp360.000
+          </Text>
+          <Button
+            title="Confirm"
+            color="black"
+            onPress={()=> navigate('Checkout')} />
         </View>
-        <Button
-          title="Edit"
-          color="black"
-          onPress={()=> navigate('Menus')}/>
-        {(participants.map((o,i)=>
-          <CardOrder icon={o.icon} name={o.name} key={i}/>
-        ))}
-        <Button
-          title="Confirm"
-          color="black"
-          onPress={()=> navigate('Checkout')} />
       </ScrollView>
     )
   }
@@ -76,7 +81,7 @@ class Order extends Component{
 
 const styles = StyleSheet.create({
   container:{
-    paddingBottom: 65
+    padding: 15
   },
   participantContainer:{
     borderWidth: 2,

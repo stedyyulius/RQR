@@ -13,7 +13,9 @@ import { filterMenu } from '../actions'
 class MenuList extends Component{
   constructor(props){
     super(props)
-    this.state={}
+    this.state={
+      ammount: 0
+    }
   }
   render(){
     return(
@@ -29,10 +31,10 @@ class MenuList extends Component{
               Rp 120.000
             </Text>
             <View style={styles.stretch}>
-              <TouchableOpacity style={styles.buttonMinus}>
+              <TouchableOpacity style={styles.buttonMinus} onPress={()=>this.setState({ammount: this.state.ammount - 1})}>
                 <Image style={styles.select} source={{uri:'http://www.pvhc.net/img157/gdvtflklbitxzfjwggsm.png'}} />
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>this.setState({ammount: this.state.ammount + 1})}>
                 <Image style={styles.select} source={{uri:'https://maxcdn.icons8.com/Share/icon/p1em/Very_Basic//plus1600.png'}} />
               </TouchableOpacity>
             </View>
@@ -40,7 +42,10 @@ class MenuList extends Component{
 
             </View>
             <Text style={styles.ammount}>
-              0
+              {(this.state.ammount < 0)
+                ? 0
+                : this.state.ammount
+              }
             </Text>
           </View>
         </View>

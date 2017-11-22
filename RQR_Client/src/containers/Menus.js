@@ -40,7 +40,6 @@ class Menus extends Component{
     })
  }
 
-
   // takePicture() {
   //   const options = {};
   //   //options.location = ...
@@ -48,7 +47,6 @@ class Menus extends Component{
   //     .then((data) => console.log(data))
   //     .catch(err => console.error(err));
   // }
-
 
   render(){
     const { navigate } = this.props.navigation
