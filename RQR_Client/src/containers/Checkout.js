@@ -53,6 +53,13 @@ class Checkout extends Component{
                     {CreditCard('https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/MasterCard_early_1990s_logo.svg/200px-MasterCard_early_1990s_logo.svg.png','Master Card')}
                     {CreditCard('https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png','Visa')}
                   </View>
+                  <View>
+                    <Text style={{fontWeight:'bold',borderBottomWidth:2}}>
+                      Debit Card
+                    </Text>
+                    {CreditCard('http://sp.beritasatu.com/media/images/original/20111221144834840.jpg','BCA')}
+                    {CreditCard('http://indowarta.com/wp-content/uploads/2017/05/logo.jpg','Mandiri')}
+                  </View>
                 </View>
               </View>
             : null
