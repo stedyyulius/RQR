@@ -28,6 +28,13 @@ const Navigator = StackNavigator({
   Checkout    : { screen: Checkout}
 });
 
+const MenuNavigator = StackNavigator({
+  Menus       : { screen: Menus},
+  Restaurants : { screen: Restaurants },
+  Order       : { screen: Order},
+  Checkout    : { screen: Checkout}
+});
+
 export default class App extends Component{
   constructor(props){
     super(props)
@@ -61,7 +68,7 @@ export default class App extends Component{
             renderIcon={() => <Icon name="cutlery" size={px2dp(22)} color="#666" />}
             renderSelectedIcon={() => <Icon name="cutlery" size={px2dp(22)} color="#3496f0" />}
             onPress={() => this.setState({ selectedTab: 'menus' })}>
-            <Menus />
+            <MenuNavigator />
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'notifications'}
