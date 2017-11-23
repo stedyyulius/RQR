@@ -52,7 +52,7 @@ class Menus extends Component{
     const { navigate } = this.props.navigation
     return(
       <ScrollView style={styles.container}>
-        {(this.state.menus)
+        {(!this.state.menus)
           ? <QRCodeScanner
                onRead={(e)=>this.onSuccess(e)}
                topContent={(
