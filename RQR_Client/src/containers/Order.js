@@ -68,7 +68,7 @@ class Order extends Component{
             <CardOrder icon={o.icon} name={o.name} key={i}/>
           ))}
           <Text style={{fontWeight:'bold'}}>
-            Total: Rp{this.props.order.totalPrice * 3}
+            Total: Rp{this.props.order.totalPrice * participants.length}
           </Text>
           <Button
             title="Confirm"
