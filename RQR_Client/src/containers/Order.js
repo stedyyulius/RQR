@@ -68,7 +68,7 @@ class Order extends Component{
             <CardOrder icon={o.icon} name={o.name} key={i}/>
           ))}
           <Text style={{fontWeight:'bold'}}>
-            Total: Rp360.000
+            Total: Rp{this.props.order.totalPrice * 3}
           </Text>
           <Button
             title="Confirm"
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) =>{
   return{
-
+    order: state.order
   }
 }
 
