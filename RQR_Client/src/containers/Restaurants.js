@@ -70,7 +70,7 @@ class Restaurants extends Component{
         {(restaurants.map((r,i)=>
           <View style={{marginBottom:180}} key={i}>
             <View style={styles.backgroundContainer}>
-              <TouchableOpacity onPress={()=> navigate('Menus')}>
+              <TouchableOpacity onPress={()=> navigate('Menus',{isRestaurant:true})}>
                 <Image
                   style={styles.restaurant}
                   source={{uri:r.image}} />

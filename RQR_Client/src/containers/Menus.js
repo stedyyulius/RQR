@@ -40,6 +40,16 @@ class Menus extends Component{
     })
  }
 
+ componentDidMount(){
+   if(this.props.navigation.state.params){
+     if(this.props.navigation.state.params.isRestaurant){
+       this.setState({
+         menus:true
+       })
+     }
+   }
+ }
+
   // takePicture() {
   //   const options = {};
   //   //options.location = ...
