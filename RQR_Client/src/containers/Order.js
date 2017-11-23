@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { NavigationActions } from 'react-navigation'
 import{
   View,
   Text,
@@ -62,7 +63,7 @@ class Order extends Component{
           <Button
             title="Edit"
             color="black"
-            onPress={()=> navigate('Menus')}/>
+            onPress={()=> this.props.navigation.dispatch(NavigationActions.back())}/>
           {(participants.map((o,i)=>
             <CardOrder icon={o.icon} name={o.name} key={i}/>
           ))}
