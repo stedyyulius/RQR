@@ -4,3 +4,10 @@ export const filterMenu = (text) =>{
     payload: 'a'
   }
 }
+
+export const setOrder = (order) =>{
+  return{
+    type: 'Order',
+    payload: order
+  }
+}

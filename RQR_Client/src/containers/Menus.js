@@ -52,7 +52,7 @@ class Menus extends Component{
     const { navigate } = this.props.navigation
     return(
       <ScrollView style={styles.container}>
-        {(!this.state.menus)
+        {(this.state.menus)
           ? <QRCodeScanner
                onRead={(e)=>this.onSuccess(e)}
                topContent={(
@@ -81,9 +81,9 @@ class Menus extends Component{
                   <MenuType text="Mains"/>
                   <MenuType text="Seafood"/>
                 </View>
-                <MenuList pic='https://media-cdn.tripadvisor.com/media/photo-s/09/74/41/2e/abuba-steak.jpg' title="T-Bone Steak"/>
-                <MenuList pic='http://hargamenu.com/wp-content/uploads/2014/09/harga-abuba-steak.jpg' title="Rib-Eye NZ Steak"/>
-                <MenuList pic='http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg' title="Sirloin Steak"/>
+                <MenuList pic='https://media-cdn.tripadvisor.com/media/photo-s/09/74/41/2e/abuba-steak.jpg' title="T-Bone Steak" price={150000}/>
+                <MenuList pic='http://hargamenu.com/wp-content/uploads/2014/09/harga-abuba-steak.jpg' title="Rib-Eye NZ Steak" price={120000}/>
+                <MenuList pic='http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg' price={100000} title="Sirloin Steak"/>
                 <View style={styles.review}>
                   <Button
                     title="Review Order"

@@ -28,14 +28,18 @@ class CardOrder extends Component{
         </View>
         <View style={styles.menuOrdered}>
           <View style={styles.menuDetail}>
-            <Text>
-              - Rib Eye Steak : 1
-            </Text>
-            <Text>
-              Rp 120.000
-            </Text>
+            {(this.props.order.order.map((o,i)=>
+              <View key={i}>
+                <Text>
+                  - {o.name} : {o.ammount}
+                </Text>
+                <Text>
+                  Rp {o.totalPrice}
+                </Text>
+              </View>
+            ))}
             <Text style={styles.price}>
-              Total: Rp 120.000
+              Total: Rp {this.props.order.totalPrice}
             </Text>
           </View>
         </View>
@@ -71,7 +75,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) =>{
   return{
-
+    order: state.order
   }
 }
 
