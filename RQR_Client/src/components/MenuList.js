@@ -6,7 +6,8 @@ import{
   StyleSheet,
   Image,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from 'react-native'
 
 import { filterMenu, setOrder } from '../actions'
@@ -15,7 +16,8 @@ class MenuList extends Component{
   constructor(props){
     super(props)
     this.state={
-      ammount: 0
+      ammount: 0,
+      isAdd: false
     }
   }
 
@@ -81,25 +83,33 @@ class MenuList extends Component{
                currency="IDR"
                style={{ color: 'red' }}
              /> */}
-             {this.props.price}
+             Rp{this.props.price}
             </Text>
-            <View style={styles.stretch}>
-              <TouchableOpacity style={styles.buttonMinus} onPress={()=>this.ammountHandler('decrease')}>
-                <Image style={styles.select} source={{uri:'http://www.pvhc.net/img157/gdvtflklbitxzfjwggsm.png'}} />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={()=>this.ammountHandler('increase')}>
-                <Image style={styles.select} source={{uri:'https://maxcdn.icons8.com/Share/icon/p1em/Very_Basic//plus1600.png'}} />
-              </TouchableOpacity>
-            </View>
+            {(this.state.isAdd)
+              ? <View style={styles.stretch}>
+                  <TouchableOpacity style={styles.buttonMinus} onPress={()=>this.ammountHandler('decrease')}>
+                    <Image style={styles.select} source={{uri:'http://www.pvhc.net/img157/gdvtflklbitxzfjwggsm.png'}} />
+                  </TouchableOpacity>
+                  <Text style={styles.ammount}>
+                    {(this.state.ammount < 0)
+                      ? 0
+                      : this.state.ammount
+                    }
+                  </Text>
+                  <TouchableOpacity onPress={()=>this.ammountHandler('increase')}>
+                    <Image style={styles.select} source={{uri:'https://maxcdn.icons8.com/Share/icon/p1em/Very_Basic//plus1600.png'}} />
+                  </TouchableOpacity>
+                </View>
+              : <TouchableOpacity style={styles.add}>
+                <Button
+                  title="Add"
+                  onPress={()=>this.setState({isAdd: true})}
+                  color="black" />
+                </TouchableOpacity>
+            }
             <View style={{flex:1}}>
 
             </View>
-            <Text style={styles.ammount}>
-              {(this.state.ammount < 0)
-                ? 0
-                : this.state.ammount
-              }
-            </Text>
           </View>
         </View>
     )
@@ -111,13 +121,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
-    padding: 15,
+    padding: 5,
     margin: 5,
     flexDirection: 'row',
   },
   item:{
-    width: 150,
-    height: 150,
+    width: 70,
+    height: 70,
     marginRight: 20
   },
   menuDetail:{
@@ -130,18 +140,24 @@ const styles = StyleSheet.create({
   stretch:{
     marginTop: 10,
     flexDirection: 'row',
+    alignSelf: 'flex-end',
   },
   buttonMinus:{
-    marginRight:12
+    marginRight:0
   },
   select:{
-    width: 30,
-    height: 30
+    width: 20,
+    height: 20
+  },
+  add:{
+    width: 50,
+    alignSelf: 'flex-end',
   },
   ammount:{
+    marginRight: 5,
+    marginLeft: 5,
     fontWeight: 'bold',
-    alignSelf: 'flex-end',
-    fontSize: 20,
+    fontSize: 15
   }
 })
 

@@ -61,7 +61,7 @@ class Menus extends Component{
   render(){
     const { navigate } = this.props.navigation
     return(
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         {(!this.state.menus)
           ? <QRCodeScanner
                onRead={(e)=>this.onSuccess(e)}
@@ -77,33 +77,46 @@ class Menus extends Component{
               //  )}
              />
           : <View>
-              <Image
-                style={styles.restaurant}
-                source={{uri: 'http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg'}} />
-                <View style={styles.buttonContainer}>
-                  <MenuButton text="Food"/>
-                  <MenuButton text="Drink"/>
-                  <MenuButton text="Dessert"/>
-                </View>
-                <View style={styles.actions}>
-                  <MenuType text="Appetizer"/>
-                  <MenuType text="Pasta"/>
-                  <MenuType text="Mains"/>
-                  <MenuType text="Seafood"/>
-                </View>
-                <MenuList pic='https://media-cdn.tripadvisor.com/media/photo-s/09/74/41/2e/abuba-steak.jpg' title="T-Bone Steak" price={150000}/>
-                <MenuList pic='http://hargamenu.com/wp-content/uploads/2014/09/harga-abuba-steak.jpg' title="Rib-Eye NZ Steak" price={120000}/>
-                <MenuList pic='http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg' price={100000} title="Sirloin Steak"/>
-                <View style={styles.review}>
-                  <Button
-                    title="Review Order"
+              <ScrollView>
+                <Image
+                  style={styles.restaurant}
+                  source={{uri: 'http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg'}} />
+                  <View style={styles.buttonContainer}>
+                    <MenuButton text="Food"/>
+                    <MenuButton text="Drink"/>
+                    <MenuButton text="Dessert"/>
+                  </View>
+                  <View style={styles.actions}>
+                    <MenuType text="Appetizer"/>
+                    <MenuType text="Pasta"/>
+                    <MenuType text="Mains"/>
+                    <MenuType text="Seafood"/>
+                  </View>
+                  <MenuList pic='https://media-cdn.tripadvisor.com/media/photo-s/09/74/41/2e/abuba-steak.jpg' title="T-Bone Steak" price={150000}/>
+                  <MenuList pic='http://hargamenu.com/wp-content/uploads/2014/09/harga-abuba-steak.jpg' title="Rib-Eye NZ Steak" price={120000}/>
+                  <MenuList pic='http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg' price={100000} title="Sirloin Steak"/>
+                  <MenuList pic='https://img.qraved.co/v2/image/data/Indonesia/Jakarta/Tebet/Abuba_Steak/sirloin_us_steak-640x424.png' price={150000} title="Sirloin US Steak"/>
+                  <MenuList pic='http://www.sparetime.jakartafamilia.com/wp-content/uploads/2016/11/ABUBA-STEAK-IMAGE-4.jpg' price={250000} title="Sirloin Wagyu"/>
+                  <MenuList pic='http://cityhighlight.com/wp-content/uploads/2016/02/Tenderlionn.png' price={70000} title="Tenderloin Steak"/>
+                </ScrollView>
+                <TouchableOpacity style={styles.review} onPress={()=> navigate('Order',{restaurant:'Abuba Steak',table:1})}>
+                  {/* <Button
+                    title={"Rp"+this.props.order.totalPrice.toString()+ "\nReview Order"}
                     color="black"
-                    onPress={()=> navigate('Order',{restaurant:'Abuba Steak',table:1})} />
-                </View>
+                    onPress={()=> navigate('Order',{restaurant:'Abuba Steak',table:1})} /> */}
+                    <Text style={styles.reviewPrice}>
+                      Rp{this.props.order.totalPrice.toString()}
+                    </Text>
+                    <Text style={styles.reviewOrder}>
+                      Review Order
+                    </Text>
+                    <Text style={styles.reviewBalance}>
+                      {/* Balance: Rp1.000.000 */}
+                    </Text>
+                </TouchableOpacity>
             </View>
         }
-
-      </ScrollView>
+      </View>
     )
   }
 }
@@ -111,8 +124,7 @@ class Menus extends Component{
 const styles = StyleSheet.create({
   container: {
    flex: 1,
-   backgroundColor: '#F5FCFF',
-   padding: 10
+   backgroundColor: '#F5FCFF'
  },
   centerText: {
     fontSize: 18,
@@ -147,6 +159,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 10,
     marginBottom: 120,
+    margin: 10
   },
   actions:{
     borderRadius: 4,
@@ -158,13 +171,38 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   review:{
-    marginBottom: 40
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'black',
+    flexDirection: 'row',
+    padding: 8,
+    justifyContent: 'center'
+  },
+  reviewPrice:{
+    flex: 1,
+    color: 'white',
+    fontWeight: 'bold',
+    justifyContent: 'flex-start'
+  },
+  reviewOrder:{
+    color:'white',
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    justifyContent: 'center'
+  },
+  reviewBalance:{
+    flex: 1,
+    color: 'white',
+    fontWeight: 'bold',
+    justifyContent: 'flex-end'
   }
 })
 
 const mapStateToProps = (state) =>{
   return{
-
+    order: state.order
   }
 }
 

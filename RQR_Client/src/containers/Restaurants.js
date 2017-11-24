@@ -14,23 +14,23 @@ import{
 var restaurants = [{
   name: 'Abuba Steak',
   image: 'http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg',
-  address: 'Jalan KH Wahid Hasyim No 120, Kebon Sirih, Menteng, RT.3/RW.1, Kb. Sirih'
+  address: 'Steak'
 },{
   name: 'Pancious',
   image: 'https://klik-eat.com/inc/script/timthumb.php?src=https://img.klik-eat.com/inc/upload/images/restaurant/Pancious/coco-peanut.jpg&h=350&w=550&zc=1&q=95',
-  address: 'Grand Indonesia West Mall, Level 3A Unit ED 1-01A'
+  address: 'Risotto'
 },{
   name: 'Secret Recipe',
   image: 'http://www.secretrecipe.com.my/wp-content/uploads/2016/03/new-york-cheese.jpg',
-  address: 'Jl. Letjen S. Parman No.28, Tj. Duren Sel., Grogol petamburan'
+  address: 'Cakes'
 },{
   name: 'Happy Day',
   image: 'http://thefoodescape.com/wp-content/uploads/2015/06/DSC_8198.jpg',
-  address: 'Jalan Ir. Haji Juanda No.19, RT.14/RW.4, Kebon Kelapa, Gambir'
+  address: 'Western Food'
 },{
   name: 'Go Grill',
   image: 'http://c1590022.cdn.cloudfiles.rackspacecloud.com/0aebbd90b1f644f22245acb27db808e8.png',
-  address: 'Jl. H. Naman No.4, RT.10/RW.3, Pd. Klp., Duren Sawit'
+  address: 'Steak'
 }]
 
 const data = [{
@@ -109,18 +109,17 @@ const styles = StyleSheet.create({
   descr:{
     alignSelf: 'stretch',
     height: 'auto',
-    opacity: 0.5,
-    backgroundColor: '#000000',
-    top: 160,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    top: 158,
     padding: 5
   },
   name:{
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   detail:{
     color: 'white',
-    fontSize: 10
+    fontSize: 10,
   }
 })
 
