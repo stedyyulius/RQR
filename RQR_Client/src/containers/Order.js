@@ -50,8 +50,8 @@ class Order extends Component{
   render(){
     const { navigate } = this.props.navigation
     return(
-      <ScrollView>
-        <View style={styles.container}>
+      <View style={styles.container}>
+        <ScrollView>
           <View style={styles.participantContainer}>
             {(participants.map((p,i)=>
               <Image
@@ -60,22 +60,26 @@ class Order extends Component{
                 source={{uri:p.icon}} />
             ))}
           </View>
-          <Button
-            title="Edit"
-            color="black"
-            onPress={()=> this.props.navigation.dispatch(NavigationActions.back())}/>
+          <TouchableOpacity style={styles.edit}>
+            <Button
+              title="Edit"
+              color="black"
+              onPress={()=> this.props.navigation.dispatch(NavigationActions.back())}/>
+          </TouchableOpacity>
           {(participants.map((o,i)=>
             <CardOrder icon={o.icon} name={o.name} key={i}/>
           ))}
           <Text style={{fontWeight:'bold'}}>
             Total: Rp{this.props.order.totalPrice * participants.length}
           </Text>
+        </ScrollView>
+        <TouchableOpacity style={styles.confirmButton}>
           <Button
             title="Confirm"
             color="black"
             onPress={()=> navigate('Checkout')} />
-        </View>
-      </ScrollView>
+        </TouchableOpacity>
+      </View>
     )
   }
 }
@@ -97,6 +101,15 @@ const styles = StyleSheet.create({
     height: 30,
     marginLeft: 10
   },
+  confirmButton:{
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  edit:{
+    justifyContent: 'flex-end'
+  }
 })
 
 const mapStateToProps = (state) =>{
