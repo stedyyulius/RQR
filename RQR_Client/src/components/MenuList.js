@@ -85,25 +85,20 @@ class MenuList extends Component{
              /> */}
              Rp{this.props.price}
             </Text>
-            {(this.state.isAdd)
+            {(this.state.isAdd && !this.state.ammount <= 0)
               ? <View style={styles.stretch}>
                   <TouchableOpacity style={styles.buttonMinus} onPress={()=>this.ammountHandler('decrease')}>
                     <Image style={styles.select} source={{uri:'http://www.pvhc.net/img157/gdvtflklbitxzfjwggsm.png'}} />
                   </TouchableOpacity>
-                  <Text style={styles.ammount}>
-                    {(this.state.ammount < 0)
-                      ? 0
-                      : this.state.ammount
-                    }
-                  </Text>
+                  <Text style={styles.ammount}>{this.state.ammount}</Text>
                   <TouchableOpacity onPress={()=>this.ammountHandler('increase')}>
                     <Image style={styles.select} source={{uri:'https://maxcdn.icons8.com/Share/icon/p1em/Very_Basic//plus1600.png'}} />
                   </TouchableOpacity>
                 </View>
               : <TouchableOpacity style={styles.add}>
-                <Button
+                  <Button
                   title="Add"
-                  onPress={()=>this.setState({isAdd: true})}
+                  onPress={()=>this.setState({isAdd: true, ammount: 1})}
                   color="black" />
                 </TouchableOpacity>
             }

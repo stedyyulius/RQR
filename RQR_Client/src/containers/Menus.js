@@ -78,13 +78,23 @@ class Menus extends Component{
              />
           : <View>
               <ScrollView>
-                <Image
-                  style={styles.restaurant}
-                  source={{uri: 'http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg'}} />
+                <View>
+                  <Image
+                    style={styles.restaurant}
+                    source={{uri: 'http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg'}} />
+                  <View style={styles.darken}>
+                    <Text style={styles.restaurantTitle}>
+                      Abuba Steak
+                    </Text>
+                    <Text style={styles.restaurantSubTitle}>
+                      Opening Hours: 10:00 - 22:00
+                    </Text>
+                  </View>
+                </View>
                   <View style={styles.buttonContainer}>
-                    <MenuButton text="Food"/>
+                    {/* <MenuButton text="Food"/>
                     <MenuButton text="Drink"/>
-                    <MenuButton text="Dessert"/>
+                    <MenuButton text="Dessert"/> */}
                   </View>
                   <View style={styles.actions}>
                     <MenuType text="Appetizer"/>
@@ -92,12 +102,14 @@ class Menus extends Component{
                     <MenuType text="Mains"/>
                     <MenuType text="Seafood"/>
                   </View>
-                  <MenuList pic='https://media-cdn.tripadvisor.com/media/photo-s/09/74/41/2e/abuba-steak.jpg' title="T-Bone Steak" price={150000}/>
-                  <MenuList pic='http://hargamenu.com/wp-content/uploads/2014/09/harga-abuba-steak.jpg' title="Rib-Eye NZ Steak" price={120000}/>
-                  <MenuList pic='http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg' price={100000} title="Sirloin Steak"/>
-                  <MenuList pic='https://img.qraved.co/v2/image/data/Indonesia/Jakarta/Tebet/Abuba_Steak/sirloin_us_steak-640x424.png' price={150000} title="Sirloin US Steak"/>
-                  <MenuList pic='http://www.sparetime.jakartafamilia.com/wp-content/uploads/2016/11/ABUBA-STEAK-IMAGE-4.jpg' price={250000} title="Sirloin Wagyu"/>
-                  <MenuList pic='http://cityhighlight.com/wp-content/uploads/2016/02/Tenderlionn.png' price={70000} title="Tenderloin Steak"/>
+                  <View style={styles.menuContainer}>
+                    <MenuList pic='https://media-cdn.tripadvisor.com/media/photo-s/09/74/41/2e/abuba-steak.jpg' title="T-Bone Steak" price={150000}/>
+                    <MenuList pic='http://hargamenu.com/wp-content/uploads/2014/09/harga-abuba-steak.jpg' title="Rib-Eye NZ Steak" price={120000}/>
+                    <MenuList pic='http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg' price={100000} title="Sirloin Steak"/>
+                    <MenuList pic='https://img.qraved.co/v2/image/data/Indonesia/Jakarta/Tebet/Abuba_Steak/sirloin_us_steak-640x424.png' price={150000} title="Sirloin US Steak"/>
+                    <MenuList pic='http://www.sparetime.jakartafamilia.com/wp-content/uploads/2016/11/ABUBA-STEAK-IMAGE-4.jpg' price={250000} title="Sirloin Wagyu"/>
+                    <MenuList pic='http://cityhighlight.com/wp-content/uploads/2016/02/Tenderlionn.png' price={70000} title="Tenderloin Steak"/>
+                  </View>
                 </ScrollView>
                 <TouchableOpacity style={styles.review} onPress={()=> navigate('Order',{restaurant:'Abuba Steak',table:1})}>
                   {/* <Button
@@ -153,13 +165,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+    alignItems: 'center',
   },
   buttonContainer:{
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
-    marginBottom: 120,
-    margin: 10
   },
   actions:{
     borderRadius: 4,
@@ -197,6 +208,26 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     justifyContent: 'flex-end'
+  },
+  restaurantTitle:{
+    justifyContent: 'center',
+    alignSelf: 'center',
+    color: 'white',
+    fontSize: 24,
+    marginTop: 25
+  },
+  restaurantSubTitle:{
+    justifyContent: 'center',
+    alignSelf: 'center',
+    color: 'white',
+    fontSize: 14,
+  },
+  darken:{
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    height: 170
+  },
+  menuContainer:{
+    marginBottom: 50
   }
 })
 
