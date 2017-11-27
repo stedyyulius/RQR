@@ -116,14 +116,14 @@ class Menus extends Component{
                     title={"Rp"+this.props.order.totalPrice.toString()+ "\nReview Order"}
                     color="black"
                     onPress={()=> navigate('Order',{restaurant:'Abuba Steak',table:1})} /> */}
-                    <Text style={styles.reviewPrice}>
-                      Rp{this.props.order.totalPrice.toString()}
+                    <Text style={styles.reviewAmmount}>
+                      {this.props.order.totalAmmount || 0}
                     </Text>
                     <Text style={styles.reviewOrder}>
                       Review Order
                     </Text>
-                    <Text style={styles.reviewBalance}>
-                      {/* Balance: Rp1.000.000 */}
+                    <Text style={styles.reviewPrice}>
+                      Rp{this.props.order.totalPrice.toString()}
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -192,22 +192,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   reviewPrice:{
-    flex: 1,
     color: 'white',
     fontWeight: 'bold',
-    justifyContent: 'flex-start'
+    alignSelf: 'flex-end'
   },
   reviewOrder:{
+    flex: 1,
     color:'white',
     fontWeight: 'bold',
     alignSelf: 'center',
-    justifyContent: 'center'
+    textAlign: 'center'
   },
-  reviewBalance:{
-    flex: 1,
+  reviewAmmount:{
     color: 'white',
     fontWeight: 'bold',
-    justifyContent: 'flex-end'
+    alignSelf: 'flex-start'
   },
   restaurantTitle:{
     justifyContent: 'center',

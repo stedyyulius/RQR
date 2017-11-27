@@ -30,10 +30,10 @@ class MenuList extends Component{
   }
 
   async ammountHandler(status){
-    let newOrder = this.props.order.order
-    let total    = 0
-    let counter  = 0
-
+    let newOrder   = this.props.order.order
+    let totalPrice = 0
+    let totalAmmount = 0
+    let counter    = 0
     await this.setter(status)
 
     let obj = {
@@ -58,13 +58,20 @@ class MenuList extends Component{
       }
     }
     for(let x = 0; x < newOrder.length; x++){
-      total += newOrder[x].totalPrice
+      totalPrice += newOrder[x].totalPrice
+      totalAmmount += newOrder[x].ammount
     }
     let order = {
       order: newOrder,
-      totalPrice: total
+      totalPrice: totalPrice,
+      totalAmmount: totalAmmount
     }
     this.props.setOrder(order)
+  }
+
+  firstAdd(){
+    this.setState({isAdd: true})
+    this.ammountHandler('increase')
   }
 
   render(){
@@ -98,7 +105,7 @@ class MenuList extends Component{
               : <TouchableOpacity style={styles.add}>
                   <Button
                   title="Add"
-                  onPress={()=>this.setState({isAdd: true, ammount: 1})}
+                  onPress={()=>this.firstAdd()}
                   color="black" />
                 </TouchableOpacity>
             }

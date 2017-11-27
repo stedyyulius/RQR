@@ -108,7 +108,11 @@ const styles = StyleSheet.create({
     right: 0,
   },
   edit:{
-    justifyContent: 'flex-end'
+    width: 70,
+    alignSelf: 'flex-end'
+  },
+  space:{
+    flex: 1
   }
 })
 
