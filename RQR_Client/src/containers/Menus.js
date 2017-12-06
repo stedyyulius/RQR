@@ -12,7 +12,8 @@ import{
   NavigatorAndroid,
   Image,
   Button,
-  ScrollView
+  ScrollView,
+  RefreshControl
 } from 'react-native'
 
 import MenuButton from '../components/MenuButton'
@@ -51,6 +52,10 @@ class Menus extends Component{
    }
  }
 
+ qrMode(){
+  this.setState({menus:false})
+ }
+
   // takePicture() {
   //   const options = {};
   //   //options.location = ...
@@ -85,7 +90,7 @@ class Menus extends Component{
                     source={{uri: 'http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg'}} />
                   <View style={styles.darken}>
                     <View style={styles.navigationIcons}>
-                      <TouchableOpacity style={styles.icon} onPress={()=> this.setState({menus:false})}>
+                      <TouchableOpacity style={styles.icon} onPress={()=> this.qrMode()}>
                         <Icon name="camera" size={20} color="white"/>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.icon}>
