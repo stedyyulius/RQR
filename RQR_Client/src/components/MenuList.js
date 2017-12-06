@@ -70,7 +70,6 @@ class MenuList extends Component{
   }
 
   firstAdd(){
-    this.setState({isAdd: true})
     this.ammountHandler('increase')
   }
 
@@ -92,7 +91,7 @@ class MenuList extends Component{
              /> */}
              Rp{this.props.price}
             </Text>
-            {(this.state.isAdd && !this.state.ammount <= 0)
+            {(!this.state.ammount <= 0)
               ? <View style={styles.stretch}>
                   <TouchableOpacity style={styles.buttonMinus} onPress={()=>this.ammountHandler('decrease')}>
                     <Image style={styles.select} source={{uri:'http://www.pvhc.net/img157/gdvtflklbitxzfjwggsm.png'}} />

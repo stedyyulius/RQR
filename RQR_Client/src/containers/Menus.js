@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Camera from 'react-native-camera';
 import QRCodeScanner from 'react-native-qrcode-scanner';
+import Icon from 'react-native-vector-icons/FontAwesome'
 import{
   View,
   StyleSheet,
@@ -83,12 +84,22 @@ class Menus extends Component{
                     style={styles.restaurant}
                     source={{uri: 'http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg'}} />
                   <View style={styles.darken}>
-                    <Text style={styles.restaurantTitle}>
-                      Abuba Steak
-                    </Text>
-                    <Text style={styles.restaurantSubTitle}>
-                      Opening Hours: 10:00 - 22:00
-                    </Text>
+                    <View style={styles.navigationIcons}>
+                      <TouchableOpacity style={styles.icon} onPress={()=> this.setState({menus:false})}>
+                        <Icon name="camera" size={20} color="white"/>
+                      </TouchableOpacity>
+                      <TouchableOpacity style={styles.icon}>
+                        <Icon name="plus" size={20} color="white"/>
+                      </TouchableOpacity>
+                    </View>
+                    <View>
+                      <Text style={styles.restaurantTitle}>
+                        Abuba Steak
+                      </Text>
+                      <Text style={styles.restaurantSubTitle}>
+                        Opening Hours: 10:00 - 22:00
+                      </Text>
+                    </View>
                   </View>
                 </View>
                   <View style={styles.buttonContainer}>
@@ -213,7 +224,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: 'white',
     fontSize: 24,
-    marginTop: 25
+    marginTop: 15
   },
   restaurantSubTitle:{
     justifyContent: 'center',
@@ -223,10 +234,18 @@ const styles = StyleSheet.create({
   },
   darken:{
     backgroundColor: 'rgba(0,0,0,0.5)',
-    height: 170
+    height: 170,
+    padding: 15
   },
   menuContainer:{
     marginBottom: 50
+  },
+  navigationIcons:{
+    alignSelf:'flex-end',
+    flexDirection: 'row'
+  },
+  icon:{
+    marginRight: 10
   }
 })
 
