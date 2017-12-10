@@ -21,7 +21,8 @@ class CardOrder extends Component{
         <View style={{flexDirection: 'column'}}>
           <Image
             style={styles.person}
-            source={{uri:this.props.icon}} />
+            source={{uri:this.props.icon}}
+          />
           <Text style={{fontWeight: 'bold',marginBottom: 10,alignSelf:'center'}}>
             {this.props.name}
           </Text>

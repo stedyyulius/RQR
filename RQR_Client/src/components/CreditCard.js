@@ -8,19 +8,16 @@ import{
 
 export const CreditCard = (image,name) =>{
   return(
-    <View style={{flexDirection: 'row',marginTop:20}}>
+    <View style={{flexDirection: 'row'}}>
       <TouchableOpacity>
         <Image
           style={{
-            height: 35,
-            width: 60,
+            height: 25,
+            width: 50,
             marginRight: 20,
           }}
           source={{uri:image}} />
       </TouchableOpacity>
-      <Text>
-        {name}
-      </Text>
     </View>
   )
 }

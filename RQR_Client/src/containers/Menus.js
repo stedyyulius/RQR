@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Camera from 'react-native-camera';
 import QRCodeScanner from 'react-native-qrcode-scanner';
+import Icon from 'react-native-vector-icons/FontAwesome'
 import{
   View,
   StyleSheet,
@@ -17,6 +18,7 @@ import{
 import MenuButton from '../components/MenuButton'
 import MenuType from '../components/MenuType'
 import MenuList from '../components/MenuList'
+import BottomButton from '../components/BottomButton'
 
 class Menus extends Component{
   constructor(props){
@@ -27,12 +29,12 @@ class Menus extends Component{
   }
 
   static navigationOptions = ({ navigation }) => ({
-  title: `Menus`,
-  headerTitleStyle: {
-    alignSelf: 'center'
-  },
-  header: null
-})
+    title: `Menus`,
+    headerTitleStyle: {
+      alignSelf: 'center'
+    },
+    header: null
+  })
 
   onSuccess(e) {
     this.setState({
@@ -83,6 +85,10 @@ class Menus extends Component{
                     style={styles.restaurant}
                     source={{uri: 'http://1.bp.blogspot.com/-kbxbz-l46z4/VF9bp5MNegI/AAAAAAAABGs/6mUcvnZKCKA/s1600/Abuba-Steak.jpg'}} />
                   <View style={styles.darken}>
+                    <View style={styles.iconContainer}>
+                      <Icon name='camera' size={20} color='white' style={{margin:7}} />
+                      <Icon name='plus' size={20} color='white' style={{margin:7}} />
+                    </View>
                     <Text style={styles.restaurantTitle}>
                       Abuba Steak
                     </Text>
@@ -111,21 +117,13 @@ class Menus extends Component{
                     <MenuList pic='http://cityhighlight.com/wp-content/uploads/2016/02/Tenderlionn.png' price={70000} title="Tenderloin Steak"/>
                   </View>
                 </ScrollView>
-                <TouchableOpacity style={styles.review} onPress={()=> navigate('Order',{restaurant:'Abuba Steak',table:1})}>
-                  {/* <Button
-                    title={"Rp"+this.props.order.totalPrice.toString()+ "\nReview Order"}
-                    color="black"
-                    onPress={()=> navigate('Order',{restaurant:'Abuba Steak',table:1})} /> */}
-                    <Text style={styles.reviewAmmount}>
-                      {this.props.order.totalAmmount || 0}
-                    </Text>
-                    <Text style={styles.reviewOrder}>
-                      Review Order
-                    </Text>
-                    <Text style={styles.reviewPrice}>
-                      Rp{this.props.order.totalPrice.toString()}
-                    </Text>
-                </TouchableOpacity>
+                <BottomButton
+                  leftTop={`${this.props.order.totalAmmount || 0} Items`}
+                  leftBottom={`Rp ${this.props.order.totalPrice.toString()}`}
+                  right='Review Order'
+                  navigate='Order'
+                  navigation={this.props.navigation}
+                />
             </View>
         }
       </View>
@@ -138,17 +136,19 @@ const styles = StyleSheet.create({
    flex: 1,
    backgroundColor: '#F5FCFF'
  },
+  iconContainer:{
+    flexDirection:'row',
+    alignSelf: 'flex-end'
+  },
   centerText: {
     fontSize: 18,
     padding: 32,
     color: '#777',
   },
-
   textBold: {
     fontWeight: '500',
     color: '#000',
   },
-
   buttonText: {
     fontSize: 21,
     color: 'rgb(0,122,255)',
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'black',
+    backgroundColor: '#16a187',
     flexDirection: 'row',
     padding: 8,
     justifyContent: 'center'
@@ -213,7 +213,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: 'white',
     fontSize: 24,
-    marginTop: 25
   },
   restaurantSubTitle:{
     justifyContent: 'center',
@@ -226,7 +225,7 @@ const styles = StyleSheet.create({
     height: 170
   },
   menuContainer:{
-    marginBottom: 50
+    marginBottom: 100
   }
 })
 

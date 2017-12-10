@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import{
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  Image
 } from 'react-native'
 
 class Friends extends Component{
@@ -13,17 +14,19 @@ class Friends extends Component{
   }
   render(){
     return(
-      <View>
-        <Text>
-          ini friends
-        </Text>
+      <View style={{flex:1}}>
+        <Image source={{uri:'https://i.imgur.com/eiwaRLX.png'}} style={styles.friends} />
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-
+  friends:{
+    flex: 1,
+    width: null,
+    height: null
+  }
 })
 
 const mapStateToProps = (state) =>{

@@ -8,21 +8,14 @@ import{
   TouchableOpacity,
   Image,
   ScrollView,
-  Button
+  Button,
+  Dimensions
 } from 'react-native'
 
-import CardOrder from '../components/CardOrder'
-
-const participants =[{
-  name: 'Stedy',
-  icon: 'https://scontent.fsub6-3.fna.fbcdn.net/v/t1.0-1/p160x160/995330_1009814712422752_5652905225413807790_n.jpg?oh=1b79fdc3c77bc739aa9f27a1c6fa0464&oe=5A97FE1C'
-},{
-  name: 'Felix',
-  icon: 'https://scontent.fsub6-3.fna.fbcdn.net/v/t1.0-1/p160x160/12096566_10153589536696427_3240500719548235275_n.jpg?oh=5772d7971a9bc39de1bf7a789cebff84&oe=5AA6AFB2'
-},{
-  name: 'Yere',
-  icon: 'https://scontent.fsub6-3.fna.fbcdn.net/v/t1.0-1/c1.0.160.160/p160x160/17884209_10155126257713764_4432106934479397568_n.jpg?oh=caf47838346efabee7d4c76ce996ec35&oe=5A968FBA'
-}]
+import OrderHeader from '../components/OrderHeader'
+import SmallItem from '../components/SmallItem'
+import MediumItem from '../components/MediumItem'
+import BottomButton from '../components/BottomButton'
 
 class Order extends Component{
   constructor(props){
@@ -30,55 +23,45 @@ class Order extends Component{
     this.state={}
   }
 
-  static navigationOptions = ({ navigation }) => ({
-    title: `Review Order`,
-    headerTitleStyle: {
-      alignSelf: 'center'
-    },
-    header:(
-      <View style={{alignItems:'center',borderBottomWidth:3}}>
-        <Text style={{fontWeight:'bold',fontSize:20}}>
-          {navigation.state.params.restaurant}
-        </Text>
-        <Text>
-          Table No: {navigation.state.params.table}
-        </Text>
-      </View>
-    )
-  })
-
   render(){
     const { navigate } = this.props.navigation
     return(
       <View style={styles.container}>
+        <OrderHeader
+          step={1}
+          title={'Confirm Order'}
+          />
         <ScrollView>
-          <View style={styles.participantContainer}>
-            {(participants.map((p,i)=>
-              <Image
-                key={i}
-                style={styles.participant}
-                source={{uri:p.icon}} />
-            ))}
+          <View style={{flexDirection:'row'}}>
+            <MediumItem left={this.props.participants[1].icon} middle={this.props.participants[1].name} />
           </View>
-          <TouchableOpacity style={styles.edit}>
-            <Button
-              title="Edit"
-              color="black"
-              onPress={()=> this.props.navigation.dispatch(NavigationActions.back())}/>
-          </TouchableOpacity>
-          {(participants.map((o,i)=>
-            <CardOrder icon={o.icon} name={o.name} key={i}/>
+          {(this.props.order.order.map((o,i)=>
+             <SmallItem key={i} left={o.ammount} middle={o.name} right={o.price * o.ammount}/>
           ))}
-          <Text style={{fontWeight:'bold'}}>
-            Total: Rp{this.props.order.totalPrice * participants.length}
-          </Text>
+          <View style={styles.subtotalContainer}>
+            <Text style={styles.subtotal}>
+              Subtotal
+            </Text>
+            <View style={{flex:1}}></View>
+            <Text style={styles.subtotalPrice}>
+             Rp {this.props.order.totalPrice}
+            </Text>
+          </View>
+          <View style={styles.confirmContainer}>
+            <View style={styles.confirm}>
+              <Text style={styles.confirmText}>
+                Confirm
+              </Text>
+            </View>
+          </View>
         </ScrollView>
-        <TouchableOpacity style={styles.confirmButton}>
-          <Button
-            title="Confirm"
-            color="black"
-            onPress={()=> navigate('Checkout')} />
-        </TouchableOpacity>
+        <BottomButton
+          leftTop={`${this.props.order.order.length} Items`}
+          leftBottom={this.props.order.totalPrice}
+          right='Next'
+          navigate='Assign'
+          navigation={this.props.navigation}
+        />
       </View>
     )
   }
@@ -86,39 +69,48 @@ class Order extends Component{
 
 const styles = StyleSheet.create({
   container:{
-    padding: 15
-  },
-  participantContainer:{
-    borderWidth: 2,
-    borderRadius: 0.5,
-    borderColor: '#d6d7da',
-    flexDirection: 'row',
-    marginBottom: 15
-  },
-  participant:{
-    borderRadius: 20,
-    width: 30,
-    height: 30,
-    marginLeft: 10
-  },
-  confirmButton:{
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  edit:{
-    width: 70,
-    alignSelf: 'flex-end'
-  },
-  space:{
+    padding: 10,
+    backgroundColor: 'white',
     flex: 1
+  },
+  confirmContainer:{
+    padding: 15,
+    justifyContent: 'center',
+    borderTopWidth: 0.5
+  },
+  confirm:{
+    justifyContent: 'center',
+    alignSelf: 'center',
+    width: Dimensions.get('window').width * 4/9,
+    height: Dimensions.get('window').height * 1/14,
+    backgroundColor: '#16a187',
+  },
+  confirmText:{
+    color: 'white',
+    alignSelf: 'center',
+    fontSize: 18,
+  },
+  subtotalContainer:{
+    flexDirection: 'row',
+    marginTop: 10
+  },
+  subtotal:{
+    fontWeight: '500',
+    fontSize: 16,
+    color: 'black'
+  },
+  subtotalPrice:{
+    fontWeight: '500',
+    fontSize: 16,
+    color: 'black',
+    marginRight: 30
   }
 })
 
 const mapStateToProps = (state) =>{
   return{
-    order: state.order
+    order: state.order,
+    participants: state.participants
   }
 }
 

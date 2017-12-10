@@ -6,6 +6,8 @@ import{
   StyleSheet
 } from 'react-native'
 
+import Navbar from '../components/Navbar'
+
 class Notifications extends Component{
   constructor(props){
     super(props)
@@ -14,9 +16,7 @@ class Notifications extends Component{
   render(){
     return(
       <View>
-        <Text>
-          ini notification
-        </Text>
+        <Navbar title="What's Up" />
       </View>
     )
   }

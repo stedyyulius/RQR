@@ -14,6 +14,7 @@ import Profile from './src/containers/Profile'
 import Notifications from './src/containers/Notifications'
 import Order from './src/containers/Order'
 import Checkout from './src/containers/Checkout'
+import Assign from './src/containers/Assign'
 
 const deviceW = Dimensions.get('window').width
 const basePx = 375
@@ -21,19 +22,26 @@ function px2dp(px) {
   return px *  deviceW / basePx
 }
 
-const Navigator = StackNavigator({
+const screens = {
   Restaurants : { screen: Restaurants },
-  Menus       : { screen: Menus},
-  Order       : { screen: Order},
-  Checkout    : { screen: Checkout}
-});
+  Menus       : { screen: Menus },
+  Order       : { screen: Order },
+  Checkout    : { screen: Checkout },
+  Assign      : { screen: Assign },
+  Profile     : { screen: Profile }
+}
 
-const MenuNavigator = StackNavigator({
-  Menus       : { screen: Menus},
+const Navigator = StackNavigator(screens);
+
+let menuScreens = {
+  Menus       : { screen: Menus },
   Restaurants : { screen: Restaurants },
-  Order       : { screen: Order},
-  Checkout    : { screen: Checkout}
-});
+  Order       : { screen: Order },
+  Checkout    : { screen: Checkout },
+  Assign      : { screen: Assign },
+  Profile     : { screen: Profile }
+}
+const MenuNavigator = StackNavigator(menuScreens);
 
 export default class App extends Component{
   constructor(props){
@@ -75,7 +83,7 @@ export default class App extends Component{
             title="Notifications"
             renderIcon={() => <Icon name="bell" size={px2dp(22)} color="#666" />}
             renderSelectedIcon={() => <Icon name="bell" size={px2dp(22)} color="#3496f0" />}
-            badgeText="1"
+            // badgeText="1"
             onPress={() => this.setState({ selectedTab: 'notifications' })}>
             <Notifications />
           </TabNavigator.Item>

@@ -106,7 +106,7 @@ class MenuList extends Component{
                   <Button
                   title="Add"
                   onPress={()=>this.firstAdd()}
-                  color="black" />
+                  color="#16a187" />
                 </TouchableOpacity>
             }
             <View style={{flex:1}}>
