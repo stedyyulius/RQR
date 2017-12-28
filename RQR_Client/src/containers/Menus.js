@@ -13,7 +13,8 @@ import{
   NavigatorAndroid,
   Image,
   Button,
-  ScrollView
+  ScrollView,
+  RefreshControl
 } from 'react-native'
 
 import MenuButton from '../components/MenuButton'
@@ -55,6 +56,10 @@ class Menus extends Component{
        })
      }
    }
+ }
+
+ qrMode(){
+  this.setState({menus:false})
  }
 
   // takePicture() {
@@ -218,6 +223,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: 'white',
     fontSize: 24,
+<<<<<<< HEAD
+=======
+    marginTop: 15
+>>>>>>> 9bff8ecadaaeced4bd38f2f12e990cb8a568b81c
   },
   restaurantSubTitle:{
     justifyContent: 'center',
@@ -227,10 +236,22 @@ const styles = StyleSheet.create({
   },
   darken:{
     backgroundColor: 'rgba(0,0,0,0.5)',
-    height: 170
+    height: 170,
+    padding: 15
   },
   menuContainer:{
+<<<<<<< HEAD
     marginBottom: 100
+=======
+    marginBottom: 50
+  },
+  navigationIcons:{
+    alignSelf:'flex-end',
+    flexDirection: 'row'
+  },
+  icon:{
+    marginRight: 10
+>>>>>>> 9bff8ecadaaeced4bd38f2f12e990cb8a568b81c
   }
 })
 
