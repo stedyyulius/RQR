@@ -47,7 +47,7 @@ class Checkout extends Component{
           <ScrollView>
             <View style={{borderBottomWidth: 0.5}}>
               <View style={{flexDirection:'row'}}>
-                <MediumItem left={this.props.participants[1].icon} middle={this.props.participants[1].name} />
+                <MediumItem left={this.props.participants[1].icon} middle={this.props.participants[1].name} navigation={this.props.navigation} />
               </View>
               <View>
                 {(this.props.order.order.map((o,i)=>

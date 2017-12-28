@@ -31,7 +31,7 @@ class MediumItem extends Component{
         <View style={styles.right}>
           {(this.props.right)
             ? <Image source={{uri:this.props.right}} style={styles.rightImage} />
-            : <TouchableOpacity style={styles.edit} onPress={()=>this.props.navigation.dispatch(NavigationActions.back())}>
+            : <TouchableOpacity style={styles.edit} onPress={()=>this.props.navigation.navigate('Menus',{isRestaurant:true})}>
                 <Text style={styles.editText}>
                   Edit
                 </Text>

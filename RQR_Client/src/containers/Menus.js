@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Camera from 'react-native-camera';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import Icon from 'react-native-vector-icons/FontAwesome'
+import firebase from 'firebase'
 import{
   View,
   StyleSheet,
@@ -19,6 +20,8 @@ import MenuButton from '../components/MenuButton'
 import MenuType from '../components/MenuType'
 import MenuList from '../components/MenuList'
 import BottomButton from '../components/BottomButton'
+
+import { setActiveTab } from '../actions'
 
 class Menus extends Component{
   constructor(props){
@@ -43,6 +46,8 @@ class Menus extends Component{
  }
 
  componentDidMount(){
+   this.props.setActiveTab(0)
+
    if(this.props.navigation.state.params){
      if(this.props.navigation.state.params.isRestaurant){
        this.setState({
@@ -237,7 +242,7 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) =>{
   return{
-
+    setActiveTab: (height) => dispatch(setActiveTab(height))
   }
 }
 

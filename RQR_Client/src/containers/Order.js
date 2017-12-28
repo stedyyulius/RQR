@@ -33,7 +33,7 @@ class Order extends Component{
           />
         <ScrollView>
           <View style={{flexDirection:'row'}}>
-            <MediumItem left={this.props.participants[1].icon} middle={this.props.participants[1].name} />
+            <MediumItem left={this.props.participants[1].icon} middle={this.props.participants[1].name} navigation={this.props.navigation} />
           </View>
           {(this.props.order.order.map((o,i)=>
              <SmallItem key={i} left={o.ammount} middle={o.name} right={o.price * o.ammount}/>

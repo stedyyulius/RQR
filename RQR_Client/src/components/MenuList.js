@@ -61,10 +61,17 @@ class MenuList extends Component{
       totalPrice += newOrder[x].totalPrice
       totalAmmount += newOrder[x].ammount
     }
+    let serviceCharge = totalPrice / 10
+    let subTotal = totalPrice + serviceCharge
+    let tax = subTotal / 10
     let order = {
       order: newOrder,
       totalPrice: totalPrice,
-      totalAmmount: totalAmmount
+      totalAmmount: totalAmmount,
+      serviceCharge: serviceCharge / 10,
+      subTotal: subTotal,
+      tax:  tax,
+      grandTotal: subTotal + tax
     }
     this.props.setOrder(order)
   }
