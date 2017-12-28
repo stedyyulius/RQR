@@ -223,10 +223,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: 'white',
     fontSize: 24,
-<<<<<<< HEAD
-=======
     marginTop: 15
->>>>>>> 9bff8ecadaaeced4bd38f2f12e990cb8a568b81c
   },
   restaurantSubTitle:{
     justifyContent: 'center',
@@ -240,10 +237,7 @@ const styles = StyleSheet.create({
     padding: 15
   },
   menuContainer:{
-<<<<<<< HEAD
     marginBottom: 100
-=======
-    marginBottom: 50
   },
   navigationIcons:{
     alignSelf:'flex-end',
@@ -251,7 +245,6 @@ const styles = StyleSheet.create({
   },
   icon:{
     marginRight: 10
->>>>>>> 9bff8ecadaaeced4bd38f2f12e990cb8a568b81c
   }
 })
 
