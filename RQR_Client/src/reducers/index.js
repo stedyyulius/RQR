@@ -5,10 +5,12 @@ import menus from './menu-reducer'
 import order from './order-reducer'
 import participants from './participants-reducer'
 import activeTab from './activeTab-reducer'
+import login from './login-reducer'
 
 export default combineReducers({
   menus: menus,
   order: order,
   participants: participants,
   activeTab: activeTab,
+  login: login
 })

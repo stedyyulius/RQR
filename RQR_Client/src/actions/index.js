@@ -27,3 +27,10 @@ export const setActiveTab = (height) =>{
     payload: height
   }
 }
+
+export const setLogin = (status) =>{
+  return{
+    type: 'Login',
+    payload: status
+  }
+}
