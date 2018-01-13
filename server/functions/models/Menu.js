@@ -6,13 +6,13 @@ var menuSchema = new Schema({
   price: Number,
   description: String,
   image: String,
-  restaurant_id: {type: Schema.Types.ObjectId, ref: 'restaurant'}],
+  restaurant_id: [{type: Schema.Types.ObjectId, ref: 'restaurant'}],
   created_at: Date,
   created_by: String,
   updated_at: Date,
   updated_by: String
 })
 
-var Menu = menuSchema.model('Menu',menuSchema)
+var Menu = mongoose.model('Menu',menuSchema)
 
 module.exports = Menu
